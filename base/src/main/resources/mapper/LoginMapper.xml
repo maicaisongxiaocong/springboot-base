@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hebut.base.mapper.LoginMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.hebut.base.entity.vo.Login">
+        <id column="id" property="id" />
+        <result column="name" property="name" />
+        <result column="account" property="account" />
+        <result column="password" property="password" />
+        <result column="phone" property="phone" />
+        <result column="email" property="email" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        id, name, account, password, phone, email
+    </sql>
+    <select id="getAllLoginInfo" resultType="com.hebut.base.entity.vo.Login">
+        select * from login
+    </select>
+
+</mapper>
