@@ -84,6 +84,20 @@
             <version>2.9.2</version>
         </dependency>
 
+        <!--日志框架-->
+        <dependency>
+            <groupId>ch.qos.logback</groupId>
+            <artifactId>logback-classic</artifactId>
+            <version>1.2.3</version>
+        </dependency>
+
+        <!--自定义切片-->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-aop</artifactId>
+        </dependency>
+
+
 
     </dependencies>
 

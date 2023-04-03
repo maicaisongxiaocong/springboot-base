@@ -1,0 +1,15 @@
+#服务器端口
+server:
+  port : 8088
+
+  # mysql配置
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url : jdbc:mysql://192.168.52.128:3306/mytest?useUnicode=true&characterEncoding=utf8&zeroDateTimeBehavior=convertToNull&serverTimezone=GMT%2B8&allowMultiQueries=true
+    username : root
+    password: 1903@heBut.
+
+  #slf4j
+logging:
+  config: classpath:logback-spring.xml
