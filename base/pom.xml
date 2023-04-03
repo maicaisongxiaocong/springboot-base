@@ -71,6 +71,19 @@
             <version>2.0</version>
         </dependency>
 
+        <!--springfox-swagger2 检测spring的web请求信息，生成检测结果（json格式）-->
+        <dependency>
+            <groupId>io.springfox</groupId>
+            <artifactId>springfox-swagger2</artifactId>
+            <version>2.9.2</version>
+        </dependency>
+        <!--springfox-swagger-ui 根据springfox-swagger2生成的数据，生成可视化的友好页面。-->
+        <dependency>
+            <groupId>io.springfox</groupId>
+            <artifactId>springfox-swagger-ui</artifactId>
+            <version>2.9.2</version>
+        </dependency>
+
 
     </dependencies>
 

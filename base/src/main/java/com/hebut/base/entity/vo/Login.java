@@ -1,6 +1,9 @@
 package com.hebut.base.entity.vo;
 
 import java.io.Serializable;
+
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
@@ -12,6 +15,7 @@ import lombok.EqualsAndHashCode;
  * @author cxc
  * @since 2023-04-02
  */
+@ApiModel("登录信息")
 @Data
 @EqualsAndHashCode(callSuper = false)
 public class Login implements Serializable {
@@ -21,6 +25,7 @@ public class Login implements Serializable {
     /**
      * 主键
      */
+      @ApiModelProperty("用户ID")
       private Integer id;
 
     /**
