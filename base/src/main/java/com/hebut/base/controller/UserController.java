@@ -1,6 +1,8 @@
 package com.hebut.base.controller;
 
 
+import com.hebut.base.common.exception.CustomeException;
+import com.hebut.base.common.exception.ExceptionEnum;
 import com.hebut.base.service.UserService;
 import com.hebut.base.util.RedisUtils;
 import io.swagger.annotations.Api;
@@ -46,11 +48,13 @@ public class UserController {
     @PostMapping("/login")
     public String login(String account, String password, HttpServletResponse response) {
 
-        //todo:账号密码从数据库增加，注意密码的加密
+        throw new CustomeException(ExceptionEnum.ERROR);
+
+    /*    //todo:账号密码从数据库增加，注意密码的加密
         if (!("153084".equals(account) && "153084".equals(password))) {
             return "error";
         }
-        return "success";
+        return "success";*/
     }
 
 }

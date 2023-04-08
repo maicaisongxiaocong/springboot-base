@@ -34,7 +34,7 @@ public class BaseApplication {
                 "Application Demo is running! Access URLs:\n\t" +
                 "本地访问地址: \thttp://localhost:" + port + path + "/\n\t" +
                 "外部访问地址: \thttp://" + ip + ":" + port + path + "/\n\t" +
-                "Swagger文档: \thttp://localhost:" + port + path + "/doc.html/\n" +
+                "Swagger文档: \thttp://localhost:" + port + path + "/doc.html\n" +
                 "----------------------------------------------------------");
     }
 
