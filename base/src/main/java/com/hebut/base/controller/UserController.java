@@ -48,7 +48,7 @@ public class UserController {
     @PostMapping("/login")
     public String login(String account, String password, HttpServletResponse response) {
 
-        throw new CustomeException(ExceptionEnum.ERROR);
+        throw new CustomeException(ExceptionEnum.SUCCESS);
 
     /*    //todo:账号密码从数据库增加，注意密码的加密
         if (!("153084".equals(account) && "153084".equals(password))) {
