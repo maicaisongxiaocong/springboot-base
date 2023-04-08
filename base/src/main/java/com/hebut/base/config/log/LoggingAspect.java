@@ -10,7 +10,7 @@ import java.util.Arrays;
 
 /**
  * @program: base
- * @description: 扫描controller目录下所有函数，所有执行函数的名称，入参·出参和执行时间
+ * @description: 扫描controller目录下所有函数，日志中打印所有正在执行函数的名称、入参、出参和执行时间
  * @author: cxc
  * @create: 2023-04-03 11:20
  **/

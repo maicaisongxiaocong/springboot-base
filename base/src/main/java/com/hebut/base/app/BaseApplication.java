@@ -7,6 +7,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.core.env.Environment;
+import springfox.documentation.swagger2.annotations.EnableSwagger2;
+
 
 import java.net.InetAddress;
 import java.net.UnknownHostException;
@@ -15,6 +17,7 @@ import java.net.UnknownHostException;
 @ComponentScan(value = "com.hebut.base")
 @MapperScan(value = "com.hebut.base.mapper")
 @SpringBootApplication()
+@EnableSwagger2
 public class BaseApplication {
 
     public static void main(String[] args) throws UnknownHostException {
@@ -31,7 +34,7 @@ public class BaseApplication {
                 "Application Demo is running! Access URLs:\n\t" +
                 "本地访问地址: \thttp://localhost:" + port + path + "/\n\t" +
                 "外部访问地址: \thttp://" + ip + ":" + port + path + "/\n\t" +
-                "Swagger文档: \thttp://" + ip + ":" + port + path + "/swagger-ui.html\n" +
+                "Swagger文档: \thttp://localhost:" + port + path + "/doc.html/\n" +
                 "----------------------------------------------------------");
     }
 

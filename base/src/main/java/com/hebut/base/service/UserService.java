@@ -1,6 +1,6 @@
 package com.hebut.base.service;
 
-import com.hebut.base.entity.vo.Login;
+import com.hebut.base.entity.vo.User;
 import com.baomidou.mybatisplus.extension.service.IService;
 
 /**
@@ -11,6 +11,6 @@ import com.baomidou.mybatisplus.extension.service.IService;
  * @author cxc
  * @since 2023-04-02
  */
-public interface LoginService extends IService<Login> {
-    Login getAll();
+public interface UserService extends IService<User> {
+    User getAll();
 }

@@ -61,9 +61,12 @@
     <!--日志中不输出 HikariCP连接池（它会在启动时输出一些信息）-->
     <logger name="com.zaxxer.hikari" level="OFF"/>
 
-    <!--打印dao层用到的sql-->
+    <!--打印dao层用到的sql
+    这里的com.hebut.base.mapper改为你项目的mapper接口所在位置
+    -->
     <logger name="com.hebut.base.mapper" level="debug" additivity="false">
         <appender-ref ref="STDOUT"/>
     </logger>
+
 
 </configuration>

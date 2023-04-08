@@ -15,10 +15,10 @@ import lombok.EqualsAndHashCode;
  * @author cxc
  * @since 2023-04-02
  */
-@ApiModel("登录信息")
+@ApiModel("用户信息")
 @Data
 @EqualsAndHashCode(callSuper = false)
-public class Login implements Serializable {
+public class User implements Serializable {
 
     private static final long serialVersionUID=1L;
 
@@ -43,15 +43,6 @@ public class Login implements Serializable {
      */
     private String password;
 
-    /**
-     * 手机号
-     */
-    private String phone;
-
-    /**
-     * 邮箱号
-     */
-    private String email;
 
 
 }

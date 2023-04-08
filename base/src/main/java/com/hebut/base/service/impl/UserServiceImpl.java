@@ -1,8 +1,8 @@
 package com.hebut.base.service.impl;
 
-import com.hebut.base.entity.vo.Login;
-import com.hebut.base.mapper.LoginMapper;
-import com.hebut.base.service.LoginService;
+import com.hebut.base.entity.vo.User;
+import com.hebut.base.mapper.UserMapper;
+import com.hebut.base.service.UserService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -16,15 +16,15 @@ import org.springframework.stereotype.Service;
  * @since 2023-04-02
  */
 @Service
-public class LoginServiceImpl extends ServiceImpl<LoginMapper, Login> implements LoginService {
+public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements UserService {
 
     @Autowired
-    LoginMapper loginMapper;
+    UserMapper UserMapper;
 
     @Override
-    public Login getAll() {
+    public User getAll() {
 
-        return loginMapper.getAllLoginInfo();
+        return UserMapper.getAllUserInfo();
 
     }
 }
