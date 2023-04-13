@@ -19,12 +19,10 @@ import org.springframework.data.redis.core.ValueOperations;
 import org.springframework.data.redis.core.ZSetOperations;
 import org.springframework.stereotype.Service;
 
-import javax.annotation.Resource;
-
 @Service
-public class RedisUtils {
+public class RedisUtil {
     @Autowired
-    private RedisTemplate redisTemplate;
+    private  RedisTemplate redisTemplate;
 
     /**
      * 写入缓存
@@ -52,19 +50,19 @@ public class RedisUtils {
      * @param value
      * @return
      */
-    public boolean set(final String key, Object value, Long expireTime, TimeUnit timeUnit) {
-        boolean result = false;
+    public  boolean set(String key,Object value,long time){
         try {
-            ValueOperations<Serializable, Object> operations = redisTemplate.opsForValue();
-            operations.set(key, value);
-            redisTemplate.expire(key, expireTime, timeUnit);
-            result = true;
+            if(time>0){
+                redisTemplate.opsForValue().set(key, value, time, TimeUnit.SECONDS);
+            }else{
+                set(key, value);
+            }
+            return true;
         } catch (Exception e) {
             e.printStackTrace();
+            return false;
         }
-        return result;
     }
-
     /**
      * 批量删除对应的value
      *

@@ -41,6 +41,19 @@ public class ResultResponse {
         this.message = errorInfo.getResultMsg();
     }
 
+    public ResultResponse(String code, String msg) {
+        this.code = code;
+        this.message = msg;
+    }
+
+    public ResultResponse(String code, String msg,Object result) {
+        this.code = code;
+        this.message = msg;
+        this.result = result;
+    }
+
+
+
     public String getCode() {
         return code;
     }
