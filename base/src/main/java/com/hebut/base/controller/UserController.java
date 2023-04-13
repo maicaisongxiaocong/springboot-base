@@ -6,11 +6,9 @@ import com.hebut.base.common.ResultResponse;
 import com.hebut.base.entity.vo.User;
 import com.hebut.base.service.UserService;
 import com.hebut.base.util.RedisUtil;
-import com.hebut.base.util.TokenUtil;
+import com.hebut.base.config.auth.TokenUtil;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
-import org.apache.shiro.authz.annotation.Logical;
-import org.apache.shiro.authz.annotation.RequiresRoles;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -69,7 +67,7 @@ public class UserController {
 
     @ApiOperation("user")
     @PostMapping("/user")
-    @RequiresRoles(logical = Logical.OR,value = {"user","admin"})
+   // @RequiresRoles(logical = Logical.OR,value = {"user","admin"})
     @ResponseBody
     public ResultResponse user(){
         return new ResultResponse("200","成功访问user接口！");
@@ -77,7 +75,7 @@ public class UserController {
 
     @ApiOperation("admin")
     @PostMapping("/admin")
-    @RequiresRoles(logical = Logical.OR,value = {"admin"})
+  //  @RequiresRoles(logical = Logical.OR,value = {"admin"})
     @ResponseBody
     public Object admin() {
         return new ResultResponse("200","成功访问admin接口！");

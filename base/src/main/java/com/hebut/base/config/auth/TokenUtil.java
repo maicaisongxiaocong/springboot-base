@@ -1,4 +1,4 @@
-package com.hebut.base.util;
+package com.hebut.base.config.auth;
 
 /**
  * @program: base
@@ -12,28 +12,50 @@ import com.auth0.jwt.JWTVerifier;
 import com.auth0.jwt.algorithms.Algorithm;
 import com.auth0.jwt.exceptions.JWTCreationException;
 import com.auth0.jwt.interfaces.DecodedJWT;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Component;
 
 import java.util.Date;
 
+
 /**
- * @ Program       :  com.ljnt.blog.utils.TokenUtil
- * @ Description   :  token工具类（生成、验证）
- * @ Author        :  lj
- * @ CreateDate    :  2020-1-31 22:15
- */
+* @Description: token生成工具类
+* @Author: cxc
+* @Date: 2023/4/13
+* @Time: 20:52
+*/
+@Component
 public class TokenUtil {
-    //这里的token属性配置最好写在配置文件中，这里为了方面直接写成静态属性
-    public static final long EXPIRE_TIME= 5*60*1000;//token到期时间5分钟，毫秒为单位
-    public static final long REFRESH_EXPIRE_TIME=30*60;//RefreshToken到期时间为30分钟，秒为单位
-    private static final String TOKEN_SECRET="ljdyaishijin**3nkjnj??";  //密钥盐
+
+    //静态变量的从配置文件加载，类上面加@Component
+    //用set函数
+    //set函数加@Value
+    public static  long EXPIRE_TIME;//token到期时间5分钟，毫秒为单位
+
+    public static  long REFRESH_EXPIRE_TIME; //RefreshToken到期时间为30分钟，秒为单位
+
+    private static  String TOKEN_SECRET;  //密钥盐
+    @Value("${jwt.expire-time}")
+    public void setExpireTime(long expireTime) {
+        EXPIRE_TIME = expireTime;
+    }
+
+    @Value("${jwt.refresh-expire-time}")
+    public void setRefreshExpireTime(long refreshExpireTime) {
+        REFRESH_EXPIRE_TIME = refreshExpireTime;
+    }
+
+    @Value("${jwt.token-secret}")
+    public void setTokenSecret(String tokenSecret) {
+        TOKEN_SECRET = tokenSecret;
+    }
 
     /**
      * @Description  ：生成token
-     * @author       : lj
+     * @author       : cxc
      * @param        : [user]
      * @return       : java.lang.String
      * @exception    :
-     * @date         : 2020-1-31 22:49
      */
     public static String sign(String account,Long currentTime){
 
@@ -55,11 +77,10 @@ public class TokenUtil {
 
     /**
      * @Description  ：token验证
-     * @author       : lj
+     * @author       : cxc
      * @param        : [token]
      * @return       : java.lang.Boolean
      * @exception    :
-     * @date         : 2020-1-31 22:59
      */
     public static Boolean verify(String token) throws Exception{
 

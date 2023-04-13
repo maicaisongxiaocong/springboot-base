@@ -27,6 +27,7 @@ import java.util.Map;
 
 @ControllerAdvice
 @Slf4j
+@ResponseBody
 public class GlobalExceptionHandler {
 
     //todo:异常处理不友好
@@ -72,7 +73,6 @@ public class GlobalExceptionHandler {
      */
     @ExceptionHandler(UnauthorizedException.class)
     public ResultResponse handle401(UnauthorizedException e) {
-        ResultResponse result = new ResultResponse();
         return new ResultResponse("401", "无权访问(Unauthorized):当前Subject没有此请求所需权限(" + e.getMessage() + ")");
     }
 

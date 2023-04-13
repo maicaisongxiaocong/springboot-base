@@ -4,7 +4,6 @@ import com.auth0.jwt.exceptions.TokenExpiredException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.hebut.base.common.ResultResponse;
 import com.hebut.base.util.RedisUtil;
-import com.hebut.base.util.TokenUtil;
 import org.apache.shiro.authc.AuthenticationToken;
 import org.apache.shiro.subject.Subject;
 import org.apache.shiro.web.filter.authc.BasicHttpAuthenticationFilter;
@@ -39,13 +38,10 @@ public class JWTFilter extends BasicHttpAuthenticationFilter {
      */
     @Override
     protected boolean isAccessAllowed(ServletRequest request, ServletResponse response, Object mappedValue) {
-        System.out.println("isAccessAllowed方法");
         try{
             return executeLogin(request,response);
         }catch (Exception e){
-            System.out.println("错误"+e);
-//            throw new ShiroException(e.getMessage());
-            responseError(response,"shiro fail");
+            responseError(response,"CustomeException");
             return false;
         }
     }
@@ -58,7 +54,6 @@ public class JWTFilter extends BasicHttpAuthenticationFilter {
      */
     @Override
     protected boolean isLoginAttempt(ServletRequest request, ServletResponse response) {
-        System.out.println("isLoginAttempt方法");
         String token=((HttpServletRequest)request).getHeader("token");
         if (token!=null){
             return true;
@@ -74,7 +69,6 @@ public class JWTFilter extends BasicHttpAuthenticationFilter {
      */
     @Override
     protected AuthenticationToken createToken(ServletRequest request, ServletResponse response) {
-        System.out.println("createToken方法");
         String jwtToken = ((HttpServletRequest)request).getHeader("token");
         if(jwtToken!=null)
             return new JWTToken(jwtToken);
@@ -91,7 +85,6 @@ public class JWTFilter extends BasicHttpAuthenticationFilter {
      */
     @Override
     protected boolean onAccessDenied(ServletRequest request, ServletResponse response) throws Exception {
-        System.out.println("onAccessDenied");
         this.sendChallenge(request,response);
         responseError(response,"token verify fail");
         return false;
@@ -110,7 +103,6 @@ public class JWTFilter extends BasicHttpAuthenticationFilter {
      */
     @Override
     protected boolean onLoginSuccess(AuthenticationToken token, Subject subject, ServletRequest request, ServletResponse response) throws Exception {
-        System.out.println("onLoginSuccess：");
         String jwttoken= (String) token.getPrincipal();
         if (jwttoken!=null){
             try{
@@ -128,9 +120,7 @@ public class JWTFilter extends BasicHttpAuthenticationFilter {
                 return false;
             }catch (Exception e){
                 Throwable throwable = e.getCause();
-                System.out.println("token验证："+e.getClass());
                 if (e instanceof TokenExpiredException){
-                    System.out.println("TokenExpiredException");
                     if (refreshToken(request, response)) {
                         return true;
                     }else {

@@ -1,18 +1,13 @@
 package com.hebut.base.config.auth;
 
-import com.hebut.base.util.TokenUtil;
 import org.apache.shiro.authc.AuthenticationException;
 import org.apache.shiro.authc.AuthenticationInfo;
 import org.apache.shiro.authc.AuthenticationToken;
 import org.apache.shiro.authc.SimpleAuthenticationInfo;
 import org.apache.shiro.authz.AuthorizationInfo;
-import org.apache.shiro.authz.SimpleAuthorizationInfo;
 import org.apache.shiro.realm.AuthorizingRealm;
 import org.apache.shiro.subject.PrincipalCollection;
 import org.springframework.stereotype.Component;
-
-import java.util.HashSet;
-import java.util.Set;
 
 /**
  * @program: base
@@ -39,13 +34,16 @@ public class CustomRealm extends AuthorizingRealm {
      */
 
 //todo:搞懂
+//这里没实现不同角色对应不同后端接口的权限，默认所有角色都能访问所有接口
+
     @Override
     protected AuthorizationInfo doGetAuthorizationInfo(PrincipalCollection principalCollection) {
+         /*
         System.out.println("用户授权");
         String username=TokenUtil.getAccount(principalCollection.toString());
         SimpleAuthorizationInfo info= new SimpleAuthorizationInfo();
         //正确的业务流程是到数据库拿该用户的权限再去进行授权的，这里只是简单的直接授权
-   /*     if (username.equals("admin")){
+       if (username.equals("admin")){
             Set<String> role=new HashSet<>();
             role.add("admin");
             info.setRoles(role);
@@ -53,9 +51,12 @@ public class CustomRealm extends AuthorizingRealm {
             Set<String> role=new HashSet<>();
             role.add("user");
             info.setRoles(role);
-        }*/
-        //这里没实现不同角色对应不同后端接口的权限，默认所有角色都能访问所有接口
+        }
         return info;
+         */
+
+
+        return null;
     }
 
 
@@ -67,10 +68,8 @@ public class CustomRealm extends AuthorizingRealm {
      */
     @Override
     protected AuthenticationInfo doGetAuthenticationInfo(AuthenticationToken authenticationToken) throws AuthenticationException {
-        System.out.println("身份认证");
         String token= (String) authenticationToken.getCredentials();
         String username= TokenUtil.getAccount(token);
-        System.out.println(username);
         //这里要去数据库查找是否存在该用户，这里直接放行
         if (username==null){
             throw new AuthenticationException("认证失败！");

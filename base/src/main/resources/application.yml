@@ -53,3 +53,9 @@ knife4j:
   openapi:
     title: Knife4j官方文档
 
+#jwt
+jwt:
+  expire-time: 300000 #//5*60*1000 token到期时间5分钟，毫秒为单位
+  refresh-expire-time: 1800 #// 30 * 60 RefreshToken到期时间为30分钟，秒为单位
+  token-secret: "ljdyaishijin**3nkjnj??"
+
