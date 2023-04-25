@@ -22,6 +22,7 @@ import java.util.Scanner;
  * @create: 2023-04-02 17:00
  **/
 public class CodeGenerator {
+    //todo: 将数据写到配置文件
     // 数据库连接配置
     private static final String JDBC_DRIVER = "com.mysql.cj.jdbc.Driver";
     private static final String JDBC_URL = "jdbc:mysql://192.168.52.128:3306/mytest?useUnicode=true&characterEncoding=utf8&zeroDateTimeBehavior=convertToNull&serverTimezone=GMT%2B8&allowMultiQueries=true";

@@ -31,7 +31,7 @@ import javax.servlet.http.HttpServletResponse;
 public class UserController {
 
     @Autowired
-    UserService UserService;
+    UserService userService;
 
     @Autowired
     private RedisUtil redisUtil;
@@ -65,21 +65,12 @@ public class UserController {
         return ResultResponse.success();
     }
 
-    @ApiOperation("user")
-    @PostMapping("/user")
-   // @RequiresRoles(logical = Logical.OR,value = {"user","admin"})
+    @ApiOperation("所有用户信息")
+    @PostMapping("/getUsers")
     @ResponseBody
-    public ResultResponse user(){
-        return new ResultResponse("200","成功访问user接口！");
-    };
-
-    @ApiOperation("admin")
-    @PostMapping("/admin")
-  //  @RequiresRoles(logical = Logical.OR,value = {"admin"})
-    @ResponseBody
-    public Object admin() {
-        return new ResultResponse("200","成功访问admin接口！");
-    };
+    public ResultResponse getUsers(){
+        return  ResultResponse.success(userService.getAll());
+    }
 
 }
 

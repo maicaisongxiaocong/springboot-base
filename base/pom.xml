@@ -145,6 +145,12 @@
             <artifactId>shiro-spring</artifactId>
             <version>1.4.0</version>
         </dependency>
+        <!--单元测试-->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+            <scope>test</scope>
+        </dependency>
 
 
 
@@ -168,5 +174,23 @@
 
         </plugins>
     </build>
+
+    <profiles>
+        <profile>
+            <id>dev</id>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+            <properties>
+                <mvn.profile>dev</mvn.profile>
+            </properties>
+        </profile>
+        <profile>
+            <id>prod</id>
+            <properties>
+                <mvn.profile>prod</mvn.profile>
+            </properties>
+        </profile>
+    </profiles>
 
 </project>
